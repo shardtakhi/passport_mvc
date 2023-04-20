@@ -14,6 +14,7 @@ route.post('/register', Register_User)
 // login route
 route.post('/loginuser', Login_User)
 
+//get login rout
 route.get('/login', (req, res) => {
   res.render('login')
 })
