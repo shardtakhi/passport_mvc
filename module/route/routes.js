@@ -1,7 +1,7 @@
 import express from 'express'
 const route = express.Router();
 import '../../core/conn.js';
-import {Get_register, Register_User, Login_User, Logout_User, Welcome_User} from '../controller/usercontroller.js';
+import {Get_register, Register_User, Login_User, Logout_User, Welcome_User , Get_forget, check_email_forget} from '../controller/usercontroller.js';
 import checkAuthenticated from '../../helper/checkAuthenticated.js'
 
 
@@ -13,6 +13,11 @@ route.get('/', Get_register )
 route.post('/register', Register_User)
 // login route
 route.post('/loginuser', Login_User)
+
+route.get('/forget', Get_forget)
+
+route.post('/checkEmailForget', check_email_forget)
+
 
 //get login rout
 route.get('/login', (req, res) => {

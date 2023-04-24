@@ -13,7 +13,7 @@
       crossorigin="anonymous"
     />
 
-    <title>login</title>
+    <title>Forget password</title>
   </head>
 
   <body>
@@ -22,7 +22,7 @@
     <div class="container">
       <div class="row d-flex justify-content-center align-item-center mt-5">
         <div class="col-md-12 text-center mt-1">
-          <h1>Login Form</h1>
+          <h1>Forget Password</h1>
         </div>
         <% if (success_message != "") { %>
           <div
@@ -56,21 +56,15 @@
             </div>
             <% } %>
         <div class="col-md-6">
-          <form action="/loginuser" method="post">
+          <form action="/checkEmailForget" method="post">
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
               <input type="email" class="form-control" id="email" name="useremail" />
               <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
             </div>
-            <div class="mb-3">
-              <label class="form-label">Password</label>
-              <input type="password" class="form-control" name="password" />
-            </div>
       
             <button type="submit" class="btn btn-dark">Submit</button>
              <div class="form-text"><h6>if You Have Not Account Then <a href="/">Create Account</a></h6></div> 
-             <div class="form-text"><h6><a href="/forget">Forget password</a></h6></div> 
-
 
           </form>
         </div>

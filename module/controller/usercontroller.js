@@ -95,54 +95,45 @@ const Welcome_User = (req, res) => {
     res.render('welcome' , {username : req.user.username})
   }
 
-  // import { Strategy as LocalStrategy } from 'passport-local';
+
+  //======================================================================
+// welcome_User
+
+const Get_forget = async (req, res) => {
+
+  res.render('forget')
+
+
+}
+  //======================================================================
+// welcome_User
+
+const check_email_forget = async (req, res) => {
+
+  const useremail =  req.body.useremail
+
+  const checkemail = await users.findOne({useremail : useremail})
+
+  if (checkemail) {
+    const rendom_no = Math.floor(100000 * Math.random() + 900000);
+    console.log(rendom_no);
+    const updatOTP = await users.updateOne({useremail : useremail}, {$set : { token : rendom_no}} )
+
+    
+
+  }
+  else{
+    console.log("email not here");
+  }
 
 
 
-  // passport.use(
-  //   new LocalStrategy(
-  //     {
-  //       usernameField: 'useremail'
-  //     },
-  //     async (useremail, password, done) => {
-  //       try {
-  //         const user = await users.findOne({ useremail })
-  
-  //         if (!user) {
-  //           return done(null, false, { message: 'Email doesnot match' })
-  //         }
-  
-  //         const match = await bcrypt.compareSync(password, user.password)
-  
-  //         if (!match) {
-  //           return done(null, false, { message: 'Wrong Password' })
-  //         }
-  
-  //         return done(null, user, { message: 'Logged in Successfully' })
-  //       } catch (error) {
-  //         return done(error)
-  //       }
-  //     }
-  //   )
-  // )
-  // //create local statergy
-  
-  // passport.serializeUser((users, done) => {
-  //   if (users) {
-  //     return done(null, users.id)
-  //   }
-  
-  //   return done(null, false)
-  // })
-  
-  // passport.deserializeUser(async (id, done) => {
-  //   try {
-  //     const user = await users.findById(id)
-  //     done(null, user)
-  //   } catch (err) {
-  //     done(err, false)
-  //   }
-  // })
 
 
-export { Get_register, Register_User, Login_User, Logout_User , Welcome_User }
+
+
+}
+
+
+
+export { Get_register, Register_User, Login_User, Logout_User , Welcome_User, Get_forget , check_email_forget }
